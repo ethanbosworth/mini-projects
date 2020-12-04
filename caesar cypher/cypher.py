@@ -165,7 +165,7 @@ if encode_or_decode == 1:
                                 counts.append(count) #add letter count to the couns array
     
                         counts.index(max(counts)) #find the most common letter
-                        letter - dict[top_letter] #find the shift of the most common letter in cypher to that of the language
+                        letter - dict_for[top_letter] #find the shift of the most common letter in cypher to that of the language
                         (cypher,len(cypher),-shift) #run the function with the shift used
     
                         temp2 = 0 #create a loop for checking the key
