@@ -108,10 +108,10 @@ def shift_cypher(cypher,k,shift):
             new_letter = dict_rev[new_letter_num] #convert back to a letter
             output.append(new_letter) #add letter to the output
 				
-        print('')
-        print('With a shift of : ' + str(shift)) #write the shift used
-        message = ''.join(output) #show the output as a string rather than an array
-        print(message)
+    print('')
+    print('With a shift of : ' + str(shift)) #write the shift used
+    message = ''.join(output) #show the output as a string rather than an array
+    print(message)
 	
 #ask if need encoding or decoding
 encode_or_decode = int(input('Please enter 0 if you wish to encode and 1 if you wish to decode: '))
@@ -142,7 +142,7 @@ if encode_or_decode == 1:
     	
         if key_check == 'yes':
     		#if encyption key is known then shift by negative of the key in the function to return the message
-            shift = input('Input the correct shift: ')
+            shift = input('Input the shift used: ')
             shift = int(shift)
             shift_cypher(cypher,len(cypher),-shift)
             code_decode = 1
@@ -162,11 +162,11 @@ if encode_or_decode == 1:
                             for j in range(len(cypher)): #add a count of each letter
                                 if cypher[j] == alphabet[i]:
                                     count += 1
-                                counts.append(count) #add letter count to the couns array
-    
-                        counts.index(max(counts)) #find the most common letter
-                        letter - dict_for[top_letter] #find the shift of the most common letter in cypher to that of the language
-                        (cypher,len(cypher),-shift) #run the function with the shift used
+                            counts.append(count) #add letter count to the couns array
+                        
+                        max_letter = counts.index(max(counts)) #find the most common letter
+                        shift = max_letter - dict_for[top_letter] #find the shift of the most common letter in cypher to that of the language
+                        shift_cypher(cypher,len(cypher),-shift) #run the function with the shift used
     
                         temp2 = 0 #create a loop for checking the key
                         while temp2 == 0:
@@ -174,7 +174,7 @@ if encode_or_decode == 1:
     						#ask if decryption was correct
                             if check2 == 'yes':
                                 temp = 2 #if yes end the loop and stop running the script
-                                code_decode = 0
+                                code_decode = 1
                                 break
                             elif check2 == 'no': #if no then end both loops
                                 temp = 1
@@ -208,7 +208,7 @@ if encode_or_decode == 1:
                         else: #if is a number then decrypt the while message using this shift
                             shift_cypher(cypher,len(cypher),shift)
                             test3 = 1
-                            code_decode = 0
+                            code_decode = 1
                                                             
         else: 
             print("Please enter a valid option")
